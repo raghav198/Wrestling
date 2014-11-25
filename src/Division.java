@@ -27,7 +27,6 @@ public class Division {
 	}
 	public void makeMatches() {
 		matches = new ArrayList<Match>();
-		System.out.println("MM:" + matchMaker.toString());
 		if (players.size() == 0) {
 			players = matchMaker;
 			matchMaker = new ArrayList<Player>();
@@ -45,7 +44,6 @@ public class Division {
 		}
 	}
 	public void playMatches() {
-		System.out.println(matches);
 		ArrayList<MatchResult> mr = new ArrayList<MatchResult>();
 		for (int i = 0; i < matches.size(); i++)
 			mr.add(

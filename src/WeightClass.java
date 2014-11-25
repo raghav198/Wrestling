@@ -18,7 +18,6 @@ public class WeightClass {
 			Location.LOSER_,
 			this);
 	public void runRoundWith(Division b) {
-		System.out.println("Running a round!");
 		b.loadPlayersFrom(allPlayers);
 		b.makeMatches();
 		b.playMatches();
