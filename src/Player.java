@@ -1,4 +1,5 @@
-
+//Framework class to represent a player
+//This will be expanded as per the database
 public class Player {
 	public String firstName, lastName;
 	public Location bracket;

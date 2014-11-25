@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+
+//All the fun happens here!!!
 public class WeightClass {
+	//Add a string of names to list of unverse players
 	public WeightClass(String[] weightClass) {
 		allPlayers = new ArrayList<Player>();
 		for (String s : weightClass){
@@ -9,21 +12,25 @@ public class WeightClass {
 		}
 	}
 	public ArrayList<Player> allPlayers;
+	//Create winner and loser brackets
 	public Division winnersBracket = new Division(
 			Location.WINNERS,
-			Location.WINNER_,
+			Location.WINNERS,
 			this);
 	public Division losersBracket = new Division(
 			Location.LOSERS,
 			Location.LOSER_,
 			this);
+	//Utility function to run a particular bracket
 	public void runRoundWith(Division b) {
 		b.loadPlayersFrom(allPlayers);
 		b.makeMatches();
 		b.playMatches();
+		//This is to update the sizes
 		winnersBracket.loadPlayersFrom(allPlayers);
 		losersBracket.loadPlayersFrom(allPlayers);
 	}
+	//Callback method: moves players around based on match results
 	public void handle(Division bracket, ArrayList<MatchResult> results) {
 		Location id = bracket.getID();
 		for (int i = 0; i < results.size(); i++) {
@@ -33,13 +40,16 @@ public class WeightClass {
 		}
 	}
 	public void main() {
+		//Start with running both
 		runRoundWith(winnersBracket);
 		runRoundWith(losersBracket);
+		//Run succession until we reach the finals
 		while (winnersBracket.players.size() > 4) {
 			runRoundWith(winnersBracket);
 			runRoundWith(losersBracket);
 			runRoundWith(losersBracket);
 		}
+		//Play out to get top 5 players
 		Match semiFinalsA = new Match(
 				winnersBracket.players.get(0),
 				winnersBracket.players.get(1));
@@ -60,6 +70,7 @@ public class WeightClass {
 				losersBracket.players.get(0),
 				losersBracket.players.get(1));
 		MatchResult tertiaryFinalResult = tertiaryFinals.resolveMatch();
+		//Display results
 		System.out.println("The tournament is over!!!!");
 		System.out.println("5 players have been selected to move on");
 		System.out.println("In first place: " + primaryFinalResult.getWinner());
@@ -67,7 +78,6 @@ public class WeightClass {
 		System.out.println("In third place: " + secondaryFinalResult.getWinner());
 		System.out.println("In fourth place: " + secondaryFinalResult.getLoser());
 		System.out.println("In fifth place: " + tertiaryFinalResult.getWinner());
-		return;
-		
+		return; //OK, so it's not *strictly* necessary but whatever
 	}
 }
