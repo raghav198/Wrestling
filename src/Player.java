@@ -7,6 +7,9 @@ public class Player {
 		firstName = name.split(" ")[0];
 		lastName = name.split(" ")[1];
 	}
+	public Player() {
+		// TODO Auto-generated constructor stub
+	}
 	public String toString() {
 		return firstName;
 	}

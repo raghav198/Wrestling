@@ -1,6 +1,7 @@
 import java.sql.*;
 
 public class DatabaseUtility {
+<<<<<<< HEAD
 	public static Connection getConnection() throws SQLException {
 		String USERNAME = "raghav985788";
 		String PASSWORD = "rm.121898";
@@ -9,3 +10,7 @@ public class DatabaseUtility {
 	}
 	
 }
+=======
+	
+}
+>>>>>>> 240d51dd442956184d0f9c79b95aca1c66907b8c
