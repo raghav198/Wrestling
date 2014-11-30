@@ -11,6 +11,14 @@ public class WeightClass {
 			allPlayers.add(p);
 		}
 	}
+	public WeightClass(ArrayList<String> weightClass) {
+		allPlayers = new ArrayList<Player>();
+		for (int i = 0; i < weightClass.size(); i++) {
+			Player p = new Player(weightClass.get(i));
+			p.bracket = Location.WINNERS;
+			allPlayers.add(p);
+		}
+	}
 	public ArrayList<Player> allPlayers;
 	//Create winner and loser brackets
 	public Division winnersBracket = new Division(

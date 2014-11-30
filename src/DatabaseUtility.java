@@ -1,16 +1,11 @@
 import java.sql.*;
 
 public class DatabaseUtility {
-<<<<<<< HEAD
+	private static final String USERNAME = "raghav985788";
+	private static final String PASSWORD = "rm.121898";
+	private static final String CONN_STRING = "jdbc:mysql://p3nlmysql101plsk.secureserver.net/mycomplabtest";
 	public static Connection getConnection() throws SQLException {
-		String USERNAME = "raghav985788";
-		String PASSWORD = "rm.121898";
-		String CONN_STR = "jdbc:mysql:///p3nlmysql101plsk.secureserver.net/mycomplabtest";
-		return DriverManager.getConnection(USERNAME, PASSWORD, CONN_STR);
+		return DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
 	}
 	
 }
-=======
-	
-}
->>>>>>> 240d51dd442956184d0f9c79b95aca1c66907b8c

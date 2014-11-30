@@ -1,27 +1,16 @@
 import java.sql.*;
-
+import java.util.ArrayList;
 //Runs the program
 public class DriverClass {
 	public static void main(String[] args) throws SQLException {
-		//This will eventually be loaded from a database connection
-		/*String[] players = new String[] {
-				"First Player",
-				"Second Player",
-				"Third Player",
-				"Fourth Player",
-				"Fifth Player",
-				"Sixth Player",
-				"Seventh Player",
-				"Eighth Player"
-		};*/
-		//More weight classes will eventually be added
-		//WeightClass wc = new WeightClass(players);
-		//wc.main();
+		//This code will be expanded to work on several weight classes
+		ArrayList<String> playerNames = new ArrayList<String>();
 		Connection c = DatabaseUtility.getConnection();
-		Statement s = c.createStatement();
-		ResultSet r = s.executeQuery("SELECT * FROM players");
-		while (r.next()) {
-			System.out.printf("%s %s, ", r.getString("fName"), r.getString("lName"));
-		}
+		Statement s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet r = s.executeQuery("SELECT * FROM player");
+		while (r.next())
+			playerNames.add(String.format("%s %s", r.getString("fName"), r.getString("lName")));
+		WeightClass wc = new WeightClass(playerNames);
+		wc.main();
 	}
 }
